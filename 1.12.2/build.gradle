@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+    }
+    dependencies {
+        // Maintained fork of ForgeGradle 2.3 that works with modern
+        // Gradle versions and the current HTTPS-only maven servers.
+        classpath 'com.anatawa12.forge:ForgeGradle:2.3-1.0.8'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = project.version
+group = project.group
+// Artifact name carries the MC version: miningtop-1.12.2-<version>.jar
+archivesBaseName = "miningtop-1.12.2"
+
+// Forge 1.12.2 runs on Java 8.
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    // 2847 is the newest 1.12.2 build that publishes a userdev jar
+    // (newer builds on the maven lack the -userdev artifact).
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    // Official stable MCP mappings for 1.12.2.
+    mappings = "stable_39"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    filesMatching('mcmod.info') {
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "miningtop",
+  "name": "MiningTop",
+  "description": "Server-side mod that counts every block every player mines, persists the counters with the world save and provides /mcount, /mtop and /mreset commands.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Yugoslavianc"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
