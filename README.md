@@ -75,7 +75,7 @@ gradlew build -PmcVersion=1.12.2    # 构建 1.12.2 版本
 
 ## 使用场景
 
-- **挖矿比赛**：`/mset sidebar` + `/mname` 定制标题，实时看排名
+- **挖掘数量显示**：`/mset sidebar` + `/mname` 定制标题，实时看排名
 - **生存服务器**：belowName 常驻显示，`/mreset all` 每周清零开新赛季
 - **单机存档**：单人世界自带集成服务器，功能完全相同；开 LAN 后统计所有加入的玩家
 
