@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+    }
+    dependencies {
+        // Maintained fork of ForgeGradle 1.2 that works with modern
+        // Gradle versions and the current HTTPS-only maven servers.
+        classpath 'com.anatawa12.forge:ForgeGradle:1.2-1.1.1'
+    }
+}
+
+apply plugin: 'forge'
+
+version = project.version
+group = project.group
+// Artifact name carries the MC version: miningtop-1.7.10-<version>.jar
+archivesBaseName = "miningtop-1.7.10"
+
+// Forge 1.7.10 runs on Java 6-8.
+sourceCompatibility = targetCompatibility = 1.6
+
+minecraft {
+    version = project.minecraft_version + "-" + project.forge_version
+    runDir = "run"
+    // Official stable MCP mappings for 1.7.10.
+    mappings = "stable_12"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    filesMatching('mcmod.info') {
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
