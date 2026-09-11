@@ -1,0 +1,22 @@
+rootProject.name = 'miningtop'
+
+// =====================================================================
+// 多版本单选构建：必须在命令行用 -PmcVersion=<版本> 指定要构建的子项目。
+// 不指定或指定错误版本时，构建直接失败并打印用法提示。
+// =====================================================================
+
+def supportedVersions = ['1.7.10', '1.12.2']
+def mcVersion = gradle.startParameter.projectProperties['mcVersion']
+
+if (!(mcVersion in supportedVersions)) {
+    throw new GradleException(
+        '===================================================================\n' +
+        ' 未选择要构建的 Minecraft 版本！\n' +
+        ' 用法: gradlew <任务> -PmcVersion=<版本>\n' +
+        " 当前支持: ${supportedVersions.join(' | ')}\n" +
+        ' 示例: gradlew build -PmcVersion=1.7.10\n' +
+        '===================================================================')
+}
+
+// 只把选中的版本作为子项目加载，另一个版本完全不参与构建。
+include mcVersion

@@ -1,0 +1,18 @@
+// =====================================================================
+// 根项目不包含任何 mod 代码，仅做版本选择与任务转发。
+// 直接执行 gradlew build 会失败，请先通过 -PmcVersion 选择版本：
+//
+//   gradlew build -PmcVersion=1.7.10    构建 1.7.10 版本
+//   gradlew build -PmcVersion=1.12.2    构建 1.12.2 版本
+// =====================================================================
+
+def mcVersion = findProperty('mcVersion')
+
+// 把常用任务转发给选中的版本子项目。
+['build', 'clean', 'jar'].each { taskName ->
+    tasks.register(taskName) {
+        group = 'MiningTop'
+        description = "转发到 :${mcVersion}:${taskName}"
+        dependsOn ":${mcVersion}:${taskName}"
+    }
+}
