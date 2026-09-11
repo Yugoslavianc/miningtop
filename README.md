@@ -42,7 +42,7 @@ MiningTop 是一个运行在**服务端**的 Forge mod（客户端无需安装�
 示例：
 
 ```
-/mname 挖矿大赛          ← 把计分栏标题改成"挖矿大赛"
+/mname 挖掘榜          ← 把计分栏标题改成"挖掘榜"
 /mset sidebar            ← 切到右侧边栏显示
 /mnick Steve 挖矿王      ← 给 Steve 设昵称
 /mtop                    ← 看排行榜
