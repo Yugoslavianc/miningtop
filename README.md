@@ -92,21 +92,4 @@ gradlew build -PmcVersion=1.12.2    # 构建 1.12.2 版本
 - 只有玩家亲手挖的方块计数；TNT 炸掉的、活塞推掉的、烧毁的不计（因此也无法用 TNT 刷榜）
 - 1.7.10 中每个维度有独立的计分板实例，mod 已做全维度同步；1.12.2 共享一个服务端计分板，天然无此问题
 
-## 目录结构
-
-```
-miningtop/
-├── build.gradle / settings.gradle / gradle.properties   # 根项目：版本选择与任务转发
-├── 1.7.10/
-│   ├── build.gradle / gradle.properties                  # 1.7.10 构建
-│   └── src/main/
-│       ├── java/com/miningtop/                           # 1.7.10 源码
-│       └── resources/ (mcmod.info, assets/.../lang/)
-└── 1.12.2/
-    ├── build.gradle / gradle.properties                  # 1.12.2 构建
-    └── src/main/
-        ├── java/com/miningtop/                           # 1.12.2 源码
-        └── resources/ (mcmod.info, assets/.../lang/)
-```
-
 两个版本源码结构完全相同：`MiningTop`（主类）、`BlockBreakHandler`（事件监听）、`MiningData`（数据持久化）、`PlayerMiningStats`（单玩家统计）、`ScoreboardSync`（计分板同步）、`BlockUtil`（方块工具）、`Command*.java`（六个命令）。
