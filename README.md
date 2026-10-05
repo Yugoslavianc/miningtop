@@ -89,7 +89,7 @@ gradlew build -PmcVersion=1.12.2    # 构建 1.12.2 版本
 ## 已知限制
 
 - 昵称（`/mnick`）只在 sidebar 生效：belowName 和 Tab 列表是客户端按玩家真实 ID 匹配的，无法替换（客户端限制）
-- 只有玩家亲手挖的方块计数；TNT 炸掉的、活塞推掉的、烧毁的不计（因此也无法用 TNT 刷榜）
+- 只有玩家挖的方块计数；TNT 炸掉的、活塞推掉的、烧毁的不计（因此也无法用 TNT 刷榜）
 - 1.7.10 中每个维度有独立的计分板实例，mod 已做全维度同步；1.12.2 共享一个服务端计分板，天然无此问题
 
 两个版本源码结构完全相同：`MiningTop`（主类）、`BlockBreakHandler`（事件监听）、`MiningData`（数据持久化）、`PlayerMiningStats`（单玩家统计）、`ScoreboardSync`（计分板同步）、`BlockUtil`（方块工具）、`Command*.java`（六个命令）。
